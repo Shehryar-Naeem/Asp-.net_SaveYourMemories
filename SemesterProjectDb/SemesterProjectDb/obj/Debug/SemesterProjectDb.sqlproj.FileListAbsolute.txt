@@ -1,0 +1,6 @@
+D:\MVC\SemesterProjectDb\SemesterProjectDb\bin\Debug\SemesterProjectDb.dacpac
+D:\MVC\SemesterProjectDb\SemesterProjectDb\bin\Debug\SemesterProjectDb.dll
+D:\MVC\SemesterProjectDb\SemesterProjectDb\bin\Debug\SemesterProjectDb.pdb
+D:\MVC\SemesterProjectDb\SemesterProjectDb\obj\Debug\SemesterProjectDb.dll
+D:\MVC\SemesterProjectDb\SemesterProjectDb\obj\Debug\SemesterProjectDb.pdb
+D:\MVC\SemesterProjectDb\SemesterProjectDb\obj\Debug\SemesterProjectDb.sqlprojAssemblyReference.cache

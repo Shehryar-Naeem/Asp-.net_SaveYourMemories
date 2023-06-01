@@ -1,0 +1,62 @@
+﻿@model SemesterWebProject.Models.Users
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+
+<section class="registration_sec">
+    <div class="registration_container">
+        <div class="registration_box">
+            <div class="reg_bg">
+                <div class="box">
+                    <!-- Existing code omitted for brevity -->
+                    <p>Don't have an account, please register first</p>
+                    <button>Register Now</button>
+                    <p>@Html.ValidationMessageFor(model => model.userName, null, new { @class = "text text-danger" })</p>
+                    <p>@Html.ValidationMessageFor(model => model.userEmail, null, new { @class = "text text-danger" })</p>
+                    <p>@Html.ValidationMessageFor(model => model.userPass, null, new { @class = "text text-danger" })</p>
+                    @if (TempData["SuccessMessage"] != null)
+                    {
+                        <p class="text-success">@TempData["SuccessMessage"]</p>
+                    }
+                </div>
+            </div>
+            <div class="form_box">
+                <div class="form sign_in_form">
+                    @using (Html.BeginForm("Create", "Users", FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true)
+                        <h2>Sign Up</h2>
+                        <div class="input_box">
+                            @Html.EditorFor(m => m.userId, new { @required = "required" })
+                            <span>User Id</span>
+                        </div>
+                        <div class="input_box">
+                            @Html.TextBoxFor(m => m.userName, new { @required = "required" })
+                            <span>User Name</span>
+                        </div>
+                        <div class="input_box">
+                            @Html.TextBoxFor(m => m.userEmail, new { @type = "email", @required = "required" })
+                            <span>Email</span>
+                        </div>
+                        <div class="input_box">
+                            @Html.PasswordFor(m => m.userPass, new { @required = "required" })
+                            <span>Password</span>
+                        </div>
+
+                        <input type="submit" name="submit" class="btn" value="Sign up" />
+                    }
+                </div>
+            </div>
+            <div>
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,41 @@
+﻿@using SemesterWebProject.Models
+
+@{ Layout = null; }
+
+<html>
+<head>
+
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Index</title>
+</head>
+
+<body>
+
+    <div>
+
+        <ul>
+
+            @foreach (ImageSaverModel imageSaverModel in @Model)
+
+            {
+
+            <li>
+                @imageSaverModel.imgId
+
+                @imageSaverModel.imgTitle
+
+                @imageSaverModel.imgDisc
+
+                <img src="data:image/png;base64,@System.Convert.ToBase64String(imageSaverModel.imgSelf)" />
+
+            </li>
+
+            }
+
+        </ul>
+
+    </div>
+
+</body>
+</html>

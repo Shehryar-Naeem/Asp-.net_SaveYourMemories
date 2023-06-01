@@ -1,0 +1,43 @@
+﻿@using SemesterWebProject.Models
+
+@{
+    ViewBag.Title = "UserDetailpractise";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>UserDetailpractise</h2>
+<html>
+<head>
+
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Index</title>
+</head>
+
+<body>
+
+    <div>
+
+        <ul>
+
+            @foreach (Users users in @Model)
+
+            {
+
+                <li>
+                    @users.userId
+
+                    @users.userName
+
+                    @users.userEmail
+
+                    @users.userPass
+                </li>
+
+            }
+
+        </ul>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,91 @@
+﻿@{
+    string userName = Session["userName"] as string;
+    string userEmail = Session["userEmail"] as string;
+    int? userId = Session["userId"] as int?;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="@Url.Content("~/StyleSheets/style.css")" rel="stylesheet" type="text/css" />
+
+    @*<link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+        <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+        <script src="~/Scripts/modernizr-2.6.2.js"></script>*@
+
+
+
+</head>
+<body>
+
+    <!-- ...other code... -->
+    <!-- ...other code... -->
+
+
+
+
+
+
+    <header>
+        <div class="header_container">
+            <div class="header_logo">
+                <img src="~/Assets/header_logo.png" alt="memories logo" />
+            </div>
+            <nav class="nav_container">
+                <ul>
+                    <li>@Html.ActionLink("Home", "Home", "Home")</li>
+                    @if (!string.IsNullOrEmpty(Session["userEmail"] as string))
+                    {
+                        <!-- Show the Create link -->
+                        <li>@Html.ActionLink("Gallary", "index", "imageSaverModels")</li>
+                        @*<li>@Html.ActionLink("Create", "Create", "imageSaverModels")</li>*@
+                    }
+
+                    @*<li>@Html.ActionLink("Create", "Create", "imageSaverModels")</li>*@
+                    @if (!string.IsNullOrEmpty(Session["userEmail"] as string))
+                    {
+                        <!-- Show the Create link -->
+                        <li>@Html.ActionLink("Create", "Create", "imageSaverModels")</li>
+                    }
+
+                    @*<li>@Html.ActionLink("Register", "Create", "Users")</li>*@
+                    @if (string.IsNullOrEmpty(Session["userEmail"] as string))
+                    {
+                        <li>@Html.ActionLink("Register", "Create", "Users")</li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink(Session["userEmail"] as string, "Details", "Users", new { id = userId }, null)</li>
+                    
+                    }
+
+                    @*<li>@Html.ActionLink("Login", "Login", "Users")</li>*@
+                    @if (string.IsNullOrEmpty(Session["userEmail"] as string))
+                    {
+                        <li>@Html.ActionLink("Login", "Login", "Users")</li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Logout", "Logout", "Users")</li>
+                    }
+
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    @RenderBody()
+    @*<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+        <script src="~/Scripts/bootstrap.min.js"></script*@
+</body>
+</html>
+
+
+
+
+
+

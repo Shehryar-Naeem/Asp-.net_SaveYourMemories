@@ -1,0 +1,35 @@
+﻿@model SemesterWebProject.Models.ImageSaverModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<section class="img_detail_section">
+    <div class="img_detail_container">
+        <h2 class="img_detail_title">image detail</h2>
+
+        <div class="img_detail_info">
+            <div class="img_single_detail">
+                <span class="img_single_detail_title">@Html.DisplayNameFor(model => model.imgTitle)</span>
+                <p>@Html.DisplayFor(model => model.imgTitle)</p>
+            </div>  
+            <div class="img_single_detail">
+                <span class="img_single_detail_title">@Html.DisplayNameFor(model => model.imgDisc)</span>
+          
+                <p>@Html.DisplayFor(model => model.imgDisc)</p>
+            </div> 
+            <div class="img_single_detail">
+                <span class="img_single_detail_title"> @Html.DisplayNameFor(model => model.imgSelf)</span>
+                <img src="data:image/png;base64,@System.Convert.ToBase64String(Model.imgSelf)" />
+            </div>
+
+           
+        </div>
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.imgId }, new { @class = "back_btn" }) |
+            @Html.ActionLink("Back to List", "Index", null, new { @class = "back_btn" })
+
+        </p>
+
+    </div>
+</section>

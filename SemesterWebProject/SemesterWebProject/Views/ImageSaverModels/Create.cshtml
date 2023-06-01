@@ -1,0 +1,82 @@
+﻿@model SemesterWebProject.Models.ImageSaverModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<section class="img_create_section">
+    <div class="img_create_container">
+
+        <div class="img_create_info">
+            <div class="img_con">
+                <img src="~/Assets/submitDetail.png"/>
+                <span>1. Submit Details</span>
+            </div>
+            <div class="img_con">
+                <img src="~/Assets/gallary.png"/>
+                <span>2. Upload</span>
+            </div>
+            <div class="img_con">
+                <img src="~/Assets/Submit for Approval.png"/>
+                <span>3. Login</span>
+            </div>
+        </div>
+        @using (Html.BeginForm("Create", "ImageSaverModels", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="img_form_create">
+                <h3 class="top_title">upload your memories</h3>
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="img_form_create_input">
+                    @Html.LabelFor(model => model.imgId, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div>
+                        @Html.EditorFor(model => model.imgId, new { htmlAttributes = new { @placeholder = "Enter image ID" } })
+                        @Html.ValidationMessageFor(model => model.imgId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="img_form_create_input">
+                    @Html.LabelFor(model => model.imgTitle, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div>
+                        @Html.EditorFor(model => model.imgTitle, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.imgTitle, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="img_form_create_input">
+                    @Html.LabelFor(model => model.imgDisc, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div>
+                        @Html.EditorFor(model => model.imgDisc, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.imgDisc, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="img_form_create_input">
+                    @Html.LabelFor(model => model.imgSelf, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="img_form_create_input_file">
+                        <input type="file" name="imglink" />
+                        @Html.ValidationMessageFor(model => model.imgSelf, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div>
+                    <div class="btn_con">
+                        <input type="submit" value="Upload" class="img_create_btn" />
+                    </div>
+                </div>
+            </div>
+        }
+
+            <div>
+                    
+                @Html.ActionLink("Back to List", "Index", null, new { @class = "back_btn" })    
+
+            </div>
+
+        <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+        <script src="~/Scripts/jquery.validate.min.js"></script>
+        <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+    </div>
+</section>
+

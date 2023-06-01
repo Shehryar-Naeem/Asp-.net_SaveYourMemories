@@ -1,0 +1,56 @@
+﻿@model IEnumerable<SemesterWebProject.Models.ImageSaverModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<section class="gallary_sec">
+    <p class="create_btn">
+
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <div class="gallary_container">
+
+
+
+
+        @foreach (var item in Model)
+        {
+
+
+
+
+
+            <div class="new_card">
+                <div class="card_img">
+                    <img src="data:image/png;base64,@System.Convert.ToBase64String(item.imgSelf)" />
+
+                </div>
+                <div class="content">
+                    <div class="detail">
+                        <h2>
+                            @Html.DisplayFor(modelItem => item.imgTitle)
+                            <br />
+                            <span>
+                                @Html.DisplayFor(modelItem => item.imgDisc)
+                            </span>
+                        </h2>
+                        <ul class="social_links">
+                            <li><a href="@Url.Action("Edit", new { id = item.imgId })"><i class="fa fa-pencil" aria-hidden="true"></i></a></li>
+                            <li><a href="@Url.Action("Details", new { id = item.imgId })"><i class="fa fa-info-circle" aria-hidden="true"></i></a></li>
+                            <li><a href="@Url.Action("Delete", new { id = item.imgId })"><i class="fa fa-trash" aria-hidden="true"></i></a></li>
+                        </ul>
+
+
+
+                    </div>
+
+                </div>
+            </div>
+        }
+
+
+
+    </div>
+
+</section>

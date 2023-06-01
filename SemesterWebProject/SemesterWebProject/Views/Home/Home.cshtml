@@ -1,0 +1,71 @@
+﻿
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="me_section">
+    <div class="me_sec_container">
+        <div class="me_sec_container_left_side">
+            <h2>Save Your Memories</h2>
+            @*<button>Save Memory</button>*@
+            @Html.ActionLink("save memory", "Create", "imageSaverModels")
+
+        </div>
+        <div class="me_sec_container_right_side">
+            <div class="me_sec_container_right_side_border">
+
+            </div>
+            <div>
+                <img src="~/Assets/profile.png" />
+            </div>
+        </div>
+    </div>
+</section>
+<section class="about_sec">
+    <div class="about_sec_banner">
+        <div class="about_sec_banner_left">
+            <h2>Save Your Memories</h2>
+            @Html.ActionLink("save memory", "Create", "imageSaverModels")
+        </div>
+        <div class="about_sec_banner_right">
+            <div>
+                <img src="~/Assets/child.png" />
+            </div>
+        </div>
+    </div>
+</section>
+<section class="child_sec">
+    <div class="child_sec_container">
+        <h2>ChildHood Section</h2>
+        <div class="child_sec_banner">
+            <div class="child_sec_banner_left">
+                <div>
+                    <img src="/Assets/child2.png" />
+                </div>
+            </div>
+            <div class="child_sec_banner_right">
+                <h2>Save Your Memories</h2>
+                @Html.ActionLink("save memory", "Create", "imageSaverModels")
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+@{
+    string userName = Session["userName"] as string;
+    string userEmail = Session["userEmail"] as string;
+    int? userId = Session["userId"] as int?;
+}
+
+@if (!string.IsNullOrEmpty(userName) && !string.IsNullOrEmpty(userEmail) && userId.HasValue)
+{
+    <p>Welcome, @userName! Your email is @userEmail and your ID is @userId.</p>
+}
+else
+{
+    <p>Session values are missing.</p>
+}

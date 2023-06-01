@@ -1,0 +1,63 @@
+﻿@model SemesterWebProject.Models.ImageSaverModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<section class="img_edit_section">
+    <div class="img_edit_container">
+        <h2 class="edit_img_title">Edit</h2>
+
+
+        @using (Html.BeginForm("Edit", "ImageSaverModels", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="img_form_edit">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.imgId)
+
+                <div class="img_form_edit_input">
+                    @Html.LabelFor(model => model.imgTitle, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.imgTitle, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.imgTitle, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="img_form_edit_input">
+                    @Html.LabelFor(model => model.imgDisc, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.imgDisc, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.imgDisc, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="img_form_edit_input">
+                    @Html.LabelFor(model => model.imgSelf, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="img_form_edit_input_file">
+                        <input type="file" name="imglink" />
+                        @Html.ValidationMessageFor(model => model.imgSelf, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Save" class="img_edit_btn"  />
+                    </div>
+                </div>
+            </div>
+        }
+
+            <div>
+                @Html.ActionLink("Back to List", "Index", null, new { @class = "back_btn" })
+
+
+            </div>
+
+        <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+        <script src="~/Scripts/jquery.validate.min.js"></script>
+        <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+    </div>
+</section>

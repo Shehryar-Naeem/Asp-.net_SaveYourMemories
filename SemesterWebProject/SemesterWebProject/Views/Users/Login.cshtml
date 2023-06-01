@@ -1,0 +1,45 @@
+﻿@model SemesterWebProject.Models.Users
+    
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="registration_sec">
+    <div class="registration_container">
+        <div class="registration_box">
+            <div class="reg_bg">
+                <div class="box">
+                    <p>Already have an account</p>
+                    <button> Login in</button>
+                    @if (!string.IsNullOrEmpty(ViewBag.error))
+                    {
+                        <p style="padding-top:1.2rem">@ViewBag.error</p>
+                    }
+                </div>
+            </div>
+            <div class="form_box">
+                <div class="form sign_in_form">
+                    @using (Html.BeginForm("Login", "Users", FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        
+                            <h2>Log in</h2>
+                            <div class="input_box">
+                                @Html.TextBoxFor(m => m.userEmail, new { @required = "required" })
+                                <span>Email</span>
+                            </div>
+                            <div class="input_box">
+                                @Html.PasswordFor(m => m.userPass, new { @required = "required" })
+                                <span>Password</span>
+                            </div>
+                            <input type="submit" name="submit" class="btn" value="Login" />
+
+                        
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

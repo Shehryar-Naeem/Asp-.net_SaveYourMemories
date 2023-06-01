@@ -1,0 +1,43 @@
+﻿@model SemesterWebProject.Models.ImageSaverModel
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+
+<section class="img_delete_section">
+    <div class="img_delete_container">
+        <h2 class="img_delete_title">Delete</h2>
+
+        <h3 class="img_delete_desc">Are you sure you want to delete this?</h3>
+        <div class="img_delete_info">
+            <div class="img_single_detail">
+                <span class="img_single_detail_title">@Html.DisplayNameFor(model => model.imgTitle)</span>
+                <p>@Html.DisplayFor(model => model.imgTitle)</p>
+            </div>
+            <div class="img_single_detail">
+                <span class="img_single_detail_title">@Html.DisplayNameFor(model => model.imgDisc)</span>
+
+                <p>@Html.DisplayFor(model => model.imgDisc)</p>
+            </div>
+            <div class="img_single_detail">
+                <span class="img_single_detail_title"> @Html.DisplayNameFor(model => model.imgSelf)</span>
+                <img src="data:image/png;base64,@System.Convert.ToBase64String(Model.imgSelf)" />
+            </div>
+            
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="img_edit_btn" /> |
+             
+                @Html.ActionLink("Back to List", "Index", null, new { @class = "back_btn" })
+
+            </div>
+            }
+        </div>
+    </div>
+</section>
+
